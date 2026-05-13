@@ -43,8 +43,8 @@ body{
 
 .login-card{
     width:100%;
-    max-width:400px;
-    background:rgba(22,16,34,.95);
+    max-width:420px;
+    background:rgba(22,16,34,.96);
     border:1px solid var(--border);
     border-radius:28px;
     padding:30px;
@@ -71,8 +71,14 @@ body{
     font-size:14px;
 }
 
-.input-group{
+.row{
+    display:flex;
+    gap:10px;
     margin-bottom:18px;
+}
+
+.input-group{
+    width:100%;
 }
 
 .input-group label{
@@ -95,7 +101,8 @@ body{
     font-size:20px;
 }
 
-.input-box input{
+.input-box input,
+.input-box select{
     width:100%;
     height:54px;
     border:none;
@@ -108,9 +115,29 @@ body{
     font-size:15px;
 }
 
-.input-box input:focus{
+.input-box select{
+    appearance:none;
+}
+
+.input-box input:focus,
+.input-box select:focus{
     border-color:var(--primary);
     box-shadow:0 0 0 4px rgba(139,92,246,.15);
+}
+
+.password-box{
+    position:relative;
+}
+
+.toggle-password{
+    position:absolute;
+    right:14px;
+    top:50%;
+    transform:translateY(-50%);
+    background:none;
+    border:none;
+    color:#b892ff;
+    cursor:pointer;
 }
 
 .login-btn{
@@ -118,7 +145,7 @@ body{
     height:56px;
     border:none;
     border-radius:18px;
-    margin-top:10px;
+    margin-top:20px;
     background:linear-gradient(135deg,var(--primary),var(--primary2));
     color:#fff;
     font-size:16px;
@@ -150,30 +177,80 @@ body{
         <p>Painel Educacional</p>
     </div>
 
-    <div class="input-group">
-        <label>RA</label>
+    <div class="row">
 
-        <div class="input-box">
-            <span class="material-icons-round">badge</span>
+        <div class="input-group">
+            <label>RA</label>
 
-            <input 
-            type="text" 
-            id="ra"
-            placeholder="Digite seu RA">
+            <div class="input-box">
+                <span class="material-icons-round">badge</span>
+
+                <input 
+                type="text"
+                id="ra"
+                placeholder="RA">
+            </div>
         </div>
+
+        <div class="input-group" style="max-width:90px;">
+            <label>Díg</label>
+
+            <div class="input-box">
+                <span class="material-icons-round">tag</span>
+
+                <input 
+                type="text"
+                id="dig"
+                maxlength="2"
+                placeholder="00">
+            </div>
+        </div>
+
+        <div class="input-group" style="max-width:100px;">
+            <label>UF</label>
+
+            <div class="input-box">
+                <span class="material-icons-round">map</span>
+
+                <select id="uf">
+                    <option>SP</option>
+                    <option>RJ</option>
+                    <option>MG</option>
+                    <option>PR</option>
+                    <option>RS</option>
+                </select>
+            </div>
+        </div>
+
     </div>
 
     <div class="input-group">
+
         <label>Senha</label>
 
-        <div class="input-box">
+        <div class="input-box password-box">
+
             <span class="material-icons-round">lock</span>
 
             <input 
-            type="password" 
+            type="password"
             id="senha"
             placeholder="Digite sua senha">
+
+            <button 
+            class="toggle-password"
+            onclick="mostrarSenha()">
+
+                <span 
+                class="material-icons-round"
+                id="eyeIcon">
+                visibility
+                </span>
+
+            </button>
+
         </div>
+
     </div>
 
     <button class="login-btn" onclick="entrar()">
@@ -188,19 +265,42 @@ body{
 
 <script>
 
+function mostrarSenha(){
+
+    const senha = document.getElementById("senha");
+    const eye = document.getElementById("eyeIcon");
+
+    if(senha.type === "password"){
+        senha.type = "text";
+        eye.innerText = "visibility_off";
+    }else{
+        senha.type = "password";
+        eye.innerText = "visibility";
+    }
+
+}
+
 function entrar(){
 
     const ra = document.getElementById("ra").value;
+    const dig = document.getElementById("dig").value;
+    const uf = document.getElementById("uf").value;
     const senha = document.getElementById("senha").value;
 
-    if(ra === "" || senha === ""){
+    if(
+        ra === "" ||
+        dig === "" ||
+        senha === ""
+    ){
         alert("Preencha todos os campos");
         return;
     }
 
     const usuario = {
-        nome: "Aluno",
-        ra: ra
+        nome:"Aluno",
+        ra:ra,
+        dig:dig,
+        uf:uf
     };
 
     localStorage.setItem(
@@ -214,4 +314,4 @@ function entrar(){
 </script>
 
 </body>
-        </html>
+</html>
