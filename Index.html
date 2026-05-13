@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CRPD — Centro de Resolução Plataform Destroyer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+        <link rel="stylesheet" href="/styles.css?v=1.0.2">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3065425917742131" crossorigin="anonymous"></script>
+</head>
+<body class="login-view">
+
+
+<div class="login-screen screen active" id="loginScreen">
+    <div class="login-screen-inner">
+    <div class="login-logo">
+        <div class="login-brand-stack">
+            <div class="login-brand-abbr" aria-label="CRPD — Centro de Resolução Plataform Destroyer">
+                <span class="login-abbr-word">CRPD</span>
+            </div>
+            <p class="login-brand-expansion">centro de resolução plataform destroyer</p>
+        </div>
+    </div>
+    <div class="login-card">
+        <div class="login-card-header">
+            <div class="icon-box"><span class="material-icons-round">person</span></div>
+            <div class="login-card-titles">
+                <h2>Entrar</h2>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="input-group ra"><input type="text" id="raInput" maxlength="15" inputmode="numeric" autocomplete="username"><label>RA</label></div>
+            <div class="input-group dig"><input type="text" id="digInput" maxlength="2" inputmode="text" autocapitalize="characters" autocomplete="off" spellcheck="false"><label>Díg</label></div>
+            <div class="input-group uf"><select id="ufSelect"><option selected>SP</option><option>RJ</option><option>MG</option><option>PR</option><option>RS</option></select><label>UF</label></div>
+        </div>
+        <div class="password-group">
+            <span class="material-icons-round leading-icon">lock</span>
+            <input type="password" id="senhaInput" autocomplete="current-password">
+            <label>Senha</label>
+            <button type="button" class="toggle-pw" onclick="togglePW()" aria-label="Mostrar ou ocultar senha"><span class="material-icons-round" id="pwIcon">visibility</span></button>
+        </div>
+        <div class="login-turnstile-wrap" aria-hidden="false">
+            <div id="turnstile-container"></div>
+        </div>
+        <div class="error-box" id="errorBox"><span class="material-icons-round">error_outline</span><span id="errorText"></span></div>
+        <button type="button" class="btn-login" id="loginBtn" onclick="doLogin()"><div class="btn-glow"></div><div class="btn-inner"><span id="loginBtnText">Acessar</span></div></button>
+    </div>
+
+    <div class="login-footer">
+        <div class="login-footer-block login-footer-legal">
+            <button type="button" class="login-android-revert-btn" id="androidRevertToAppBtn" onclick="preferAndroidAppGate()" style="display:none">Ver tela do app na Play Store</button>
+            <a class="terms-link" onclick="document.getElementById('termsModal').classList.add('show')">Termos de Uso</a>
+            <p class="credit">Criado por Mentalista, Nyx e sev3ntzz</p>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="login-screen screen" id="androidDownloadScreen" aria-label="Instalar aplicativo Android">
+    <div class="login-screen-inner">
+        <div class="login-logo">
+            <div class="login-brand-stack">
+                <div class="login-brand-abbr" aria-label="CRPD — Centro de Resolução Plataform Destroyer">
+                    <span class="login-abbr-word">CRPD</span>
+                </div>
+                <p class="login-brand-expansion">centro de resolução plataform destroyer</p>
+            </div>
+        </div>
+        <div class="login-android-gate">
+            <div class="login-android-icon-wrap" aria-hidden="true"><span class="material-icons-round">android</span></div>
+            <h2 class="login-android-title">Use o app no Android</h2>
+            <p class="login-android-text">No aplicativo Android você tem <strong>mais funções</strong> e <strong>mais plataformas</strong> integradas do que na versão web. Baixe o app oficial na Google Play para entrar com seu RA e senha.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.lmcomu.crsp" class="login-android-play-btn" rel="noopener noreferrer">
+                <svg class="login-play-logo" width="22" height="26" viewBox="0 0 17 20" fill="none" aria-hidden="true"><path d="M.55.26C.22.53 0 1 0 1.59v16.82c0 .59.22 1.06.55 1.33l.07.07 9.42-9.42v-.22L.62.19.55.26z" fill="#fff"/><path d="M13.18 13.53l-3.14-3.14v-.22l3.14-3.14.07.04 3.72 2.12c1.06.6 1.06 1.59 0 2.19l-3.72 2.12-.07.03z" fill="#fff"/><path d="M13.25 13.49L10.04 10.28.55 19.74c.35.37.93.42 1.59.05l11.11-6.3z" fill="#fff"/><path d="M13.25 6.51L2.14.21C1.48-.16.9-.11.55.26l9.49 9.46 3.21-3.21z" fill="#fff"/></svg>
+                <span>Google Play</span>
+            </a>
+            <p class="login-android-foot">No iPhone ou no computador, você pode usar o site normalmente.</p>
+            <button type="button" class="login-android-web-fallback" onclick="enableWebLoginOnAndroid()">Entrar pela versão web mesmo assim</button>
+        </div>
+        <div class="login-footer">
+            <div class="login-footer-block login-footer-legal">
+                <a class="terms-link" onclick="document.getElementById('termsModal').classList.add('show')">Termos de Uso</a>
+                <p class="credit">Criado por Mentalista, Nyx e sev3ntzz</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="screen" id="dashboardScreen">
+    <div class="screen-header">
+        <button class="icon-btn mobile-only" onclick="toggleSidebar()" style="display:none"><span class="material-icons-round">menu</span></button>
+        <div class="header-info"><h1>Dashboard</h1><p id="userName">-</p></div>
+    </div>
+    <div class="screen-content">
+        <div class="dashboard-main-grid">
+            <div class="dashboard-left-col">
+                <div class="dashboard-top-row">
+                    <div class="welcome-card">
+                        <div class="avatar"><span class="material-icons-round">person</span></div>
+                        <div class="welcome-info"><h2>Bem-vindo de volta!</h2><p class="user-name" id="welcomeUser">-</p><div class="turmas-badge"><span class="dot"></span><span id="turmasCount">0 Turmas</span></div></div>
+                    </div>
+                    <div class="dash-pendencias" id="dashPendencias">
+                        <div class="pend-summary-card" id="pendSummaryCard" style="display:none" onclick="openPendenciasModal()">
+                            <div class="pend-summary-num" id="pendTotalNum">0</div>
+                            <div class="pend-summary-label">Pendência</div>
+                            <div class="dash-quick-accent"></div>
+                        </div>
+                        <div class="loading-box" id="pendLoadingBox"><div class="spinner"></div><p style="color:var(--subtle-text);font-size:13px">Carregando pendências...</p></div>
+                    </div>
+                </div>
+                <div class="dash-quick-cards">
+                    <div class="dash-quick-card" id="dashPresencaCard" onclick="openPresenca()" style="display:none">
+                        <div class="dash-quick-num" id="dashPresencaNum">-</div>
+                        <div class="dash-quick-label">Faltas</div>
+                        <div class="dash-quick-accent accent-orange"></div>
+                    </div>
+                    <div class="dash-quick-card" onclick="openBoletim()">
+                        <div class="dash-quick-title">Boletim</div>
+                        <div class="dash-quick-sub">e Avaliações</div>
+                        <div class="dash-quick-accent accent-blue"></div>
+                    </div>
+                </div>
+
+                <div class="dash-access-card">
+                    <div class="dash-access-head">
+                        <h3>Acesso rápido</h3>
+                        <button type="button" class="dash-access-plat-link" onclick="navigateTo('plataformasScreen')" title="Ver todas as plataformas">Plataformas</button>
+                    </div>
+                    <div class="dash-access-grid">
+                        <button class="dash-access-item" onclick="openAlura()">
+                            <span class="material-icons-round">code</span>
+                            <span class="dash-access-name">Alura</span>
+                        </button>
+                        <button class="dash-access-item" onclick="openLeiaSp()">
+                            <span class="material-icons-round">menu_book</span>
+                            <span class="dash-access-name">Leia SP</span>
+                        </button>
+                        <button class="dash-access-item" onclick="openEduProf()">
+                            <span class="material-icons-round">school</span>
+                            <span class="dash-access-name">Edu. Profissional</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agenda-card" id="agendaCard">
+                <div class="agenda-header">
+                    <h3>Agenda</h3>
+                    <span class="agenda-sub">Próximas atividades</span>
+                </div>
+                <div class="agenda-list" id="agendaList">
+                    <div class="loading-box" style="padding:24px 14px">
+                        <div class="spinner" style="width:28px;height:28px"></div>
+                        <p style="color:var(--subtle-text);font-size:13px">Carregando agenda...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="screen" id="tasksScreen">
+    <div class="screen-header">
+        <button class="icon-btn mobile-menu-btn" onclick="toggleSidebar()" style="display:none"><span class="material-icons-round">menu</span></button>
+        <button class="back-btn" onclick="navigateTo('dashboardScreen')"><span class="material-icons-round">arrow_back</span></button>
+        <div class="header-info"><h1 id="tasksTitle">Tarefas</h1><p id="tasksSubtitle">-</p></div>
+        <button class="icon-btn" onclick="loadTasks()"><span class="material-icons-round">refresh</span></button>
+    </div>
+    <div class="tabs">
+        <button class="tab active" onclick="switchTaskTab(this,0)">Atividades</button>
+        <button class="tab" onclick="switchTaskTab(this,1)">Entregues</button>
+    </div>
+    <div class="screen-content" id="tasksContent">
+        <div class="processing-banner" id="processingBanner">
+            <div class="pb-header"><span class="material-icons-round">sync</span><span id="pbTitle">Processando...</span></div>
+            <div class="pb-text" id="pbText">-</div>
+            <div class="pb-bar"><div class="fill" id="pbFill" style="width:0%"></div></div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;margin-bottom:16px" id="fazerTodasWrap">
+            <button class="btn btn-primary" style="display:flex;align-items:center;gap:8px;padding:10px 20px;font-size:14px" id="btnFazerTodas" onclick="fazerTodas()">
+                <span class="material-icons-round" style="font-size:18px">playlist_play</span>Fazer Todas
+            </button>
+        </div>
+        <div id="tasksList"><div class="loading-box"><div class="spinner"></div><p style="color:var(--subtle-text);font-size:13px">Carregando atividades...</p></div></div>
+    </div>
+</div>
+
+
+<div class="screen" id="chatScreen">
+    <div class="screen-header">
+        <button class="icon-btn mobile-menu-btn" onclick="toggleSidebar()" style="display:none"><span class="material-icons-round">menu</span></button>
+        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#444,#333);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-icons-round" style="font-size:22px;color:#fff">psychology</span></div>
+        <div class="header-info"><h1 style="font-size:20px">Apeia IA</h1><div style="display:flex;align-items:center;gap:4px"><div style="width:8px;height:8px;border-radius:50%;background:var(--accent-green)"></div><p style="margin:0">Online</p></div></div>
+        <div style="position:relative">
+            <button class="icon-btn" id="ttsBtn" onclick="toggleTts()" title="Voz da IA (Francisca)"><span class="material-icons-round" id="ttsBtnIcon">volume_off</span></button>
+            <div id="voicePicker" class="voice-picker" style="display:none"></div>
+        </div>
+        <button class="icon-btn" onclick="startCall()" title="Ligar para a Apeia"><span class="material-icons-round">call</span></button>
+        <button class="icon-btn" onclick="chatClear()" title="Limpar conversa"><span class="material-icons-round">delete_sweep</span></button>
+    </div>
+    <div class="chat-messages" id="chatMessages"><div class="chat-msg ai"><div class="msg-label"><span class="material-icons-round" style="font-size:14px">psychology</span>Apeia IA</div>Olá! Sou a Apeia, sua assistente de estudos. Como posso ajudar?</div></div>
+    <div class="chat-model-bar" id="chatModelBar" style="padding:4px 12px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.06)">
+        <label for="chatModelSelect" style="font-size:12px;color:var(--subtle-text);white-space:nowrap">Modelo de IA</label>
+        <select id="chatModelSelect" title="Automático: DeepSeek → Livia → TalkAI → Overchat" style="flex:1;min-width:120px;max-width:100%;font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(0,0,0,.28);color:#fff;border:1px solid rgba(255,255,255,.12)">
+            <option value="auto">Automático (recomendado)</option>
+            <option value="deepseek:gratuito">DeepSeek Gratuito</option>
+            <option value="livepix:livia">Livepix — Livia</option>
+            <option value="talkai:gpt-4.1-nano">TalkAI — GPT-4.1 Nano</option>
+            <option value="overchat:gpt-4o">Overchat — GPT-4o</option>
+        </select>
+    </div>
+    <div class="chat-input-bar">
+        <button class="chat-action-btn" id="micBtn" onclick="toggleRecord()" title="Gravar voz"><span class="material-icons-round" style="font-size:20px" id="micIcon">mic</span></button>
+        <input type="text" id="chatInput" placeholder="Digite sua mensagem..." onkeydown="if(event.key==='Enter')sendChat()">
+        <button class="send-btn" onclick="sendChat()"><span class="material-icons-round">send</span></button>
+    </div>
+</div>
+
+
+<div class="screen" id="apostilasScreen">
+    <div class="screen-header"><button class="icon-btn mobile-menu-btn" onclick="toggleSidebar()" style="display:none"><span class="material-icons-round">menu</span></button><div class="header-info"><h1>Apostilas</h1><p>Material didático</p></div><button class="icon-btn" id="apostilasRefreshBtn" onclick="refreshApostilasForced()" title="Atualizar apostilas"><span class="material-icons-round">refresh</span></button></div>
+    <div class="screen-content"><div class="apostilas-grid" id="apostilasGrid"></div></div>
+</div>
+
+
+<div class="screen" id="contribuirScreen">
+    <div class="screen-header"><button class="icon-btn mobile-menu-btn" onclick="toggleSidebar()" style="display:none"><span class="material-icons-round">menu</span></button><div class="header-info"><h1>Contribuir</h1><p>Ajude a comunidade</p></div></div>
+    <div class="screen-content" id="contribuirContent"></div>
+</div>
+
+
+<div class="screen" id="plataformasScreen">
+    <div class="screen-header"><button class="icon-btn mobile-menu-btn" onclick="toggleSidebar()" style="display:none"><span class="material-icons-round">menu</span></button><div class="header-info"><h1>Plataformas</h1><p>Integrações educacionais</p></div></div>
+    <div class="screen-content" id="plataformasContent"></div>
+</div>
+
+
+<div class="screen" id="leiaScreen">
+    <div class="screen-header">
+        <button class="icon-btn mobile-menu-btn" onclick="toggleSidebar()" style="display:none"><span class="material-icons-round">menu</span></button>
+        <button class="back-btn" onclick="leiaBack()"><span class="material-icons-round">arrow_back</span></button>
+        <div class="header-info"><h1 id="leiaTitle">Leia SP</h1><p id="leiaSubtitle">Biblioteca Digital</p></div>
+        <button class="icon-btn" onclick="openLeiaPerf()" title="Meu Perfil"><span class="material-icons-round">person</span></button>
+        <button class="icon-btn" onclick="leiaRefresh()"><span class="material-icons-round">refresh</span></button>
+    </div>
+    <div class="screen-content"><div id="leiaContent"></div></div>
+
+    
+    <div id="leiaBookDialog" class="leia-dialog-overlay" onclick="if(event.target===this)this.style.display='none'">
+        <div class="leia-dialog-card leia-dialog-book">
+            <div id="leiaBookDialogContent"></div>
+        </div>
+    </div>
+
+    
+    <div id="leiaSimDialog" class="leia-dialog-overlay leia-dialog-overlay-strong">
+        <div class="leia-dialog-card leia-dialog-sim">
+            <div id="leiaSimDialogContent"></div>
+        </div>
+    </div>
+
+    
+    <div id="leiaPerfModal" class="leia-dialog-overlay leia-dialog-overlay-strong">
+        <div class="leia-dialog-card leia-perf-box">
+            <div class="leia-perf-header">
+                <h2>Seu Perfil</h2>
+                <button class="leia-perf-close" onclick="closeLeiaPerfModal()">×</button>
+            </div>
+            <div id="leiaPerfContent"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="screen" id="aluraScreen">
+    <div class="screen-header">
+        <button class="icon-btn mobile-menu-btn" onclick="toggleSidebar()" style="display:none"><span class="material-icons-round">menu</span></button>
+        <button class="back-btn" onclick="aluraBack()"><span class="material-icons-round">arrow_back</span></button>
+        <div class="header-info"><h1 id="aluraTitle">Alura</h1><p id="aluraSubtitle">Cursos de tecnologia</p></div>
+        <button class="icon-btn" onclick="aluraRefreshCurrent()"><span class="material-icons-round">refresh</span></button>
+    </div>
+    <div class="screen-content"><div id="aluraContent"></div></div>
+</div>
+
+
+<div class="screen" id="eduprofScreen">
+    <div class="screen-header">
+        <button class="icon-btn mobile-menu-btn" onclick="toggleSidebar()" style="display:none"><span class="material-icons-round">menu</span></button>
+        <button class="back-btn" onclick="eduProfBack()"><span class="material-icons-round">arrow_back</span></button>
+        <div class="header-info"><h1 id="eduProfTitle">Educação Profissional</h1><p id="eduProfSubtitle">Moodle Paulista</p></div>
+        <button class="icon-btn" onclick="eduProfRefresh()"><span class="material-icons-round">refresh</span></button>
+    </div>
+    <div class="screen-content"><div id="eduProfContent"></div></div>
+</div>
+
+
+<div class="screen" id="expansaoScreen">
+    <div class="screen-header">
+        <button class="icon-btn mobile-menu-btn" onclick="toggleSidebar()" style="display:none"><span class="material-icons-round">menu</span></button>
+        <button class="back-btn" onclick="expansaoBack()"><span class="material-icons-round">arrow_back</span></button>
+        <div class="header-info"><h1 id="expansaoTitle">Expansão Noturna</h1><p id="expansaoSubtitle">Moodle EE</p></div>
+        <button class="icon-btn" onclick="expansaoRefresh()"><span class="material-icons-round">refresh</span></button>
+    </div>
+    <div class="screen
