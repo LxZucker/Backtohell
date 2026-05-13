@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BackToHell - Home</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+:root{
+    --bg:#0b0714;
+    --card:#161022;
+    --border:#2c1d47;
+    --primary:#8b5cf6;
+    --primary2:#6d28d9;
+    --text:#ffffff;
+    --sub:#b6abd1;
+}
+
+body{
+    background:
+    radial-gradient(circle at top,#2a1847 0%,transparent 35%),
+    linear-gradient(180deg,#0b0714,#120a20);
+
+    min-height:100vh;
+    color:var(--text);
+    padding-bottom:100px;
+}
+
+/* HEADER */
+
+.header{
+    padding:25px 20px;
+}
+
+.welcome{
+    background:rgba(22,16,34,.96);
+    border:1px solid var(--border);
+    border-radius:26px;
+    padding:24px;
+    box-shadow:0 0 30px rgba(139,92,246,.15);
+}
+
+.welcome-top{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.avatar{
+    width:60px;
+    height:60px;
+    border-radius:18px;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.avatar span{
+    font-size:32px;
+}
+
+.welcome h1{
+    font-size:24px;
+    margin-bottom:5px;
+}
+
+.welcome p{
+    color:var(--sub);
+    font-size:14px;
+}
+
+/* CARDS */
+
+.cards{
+    padding:0 20px;
+    display:grid;
+    gap:15px;
+    margin-top:10px;
+}
+
+.card{
+    background:rgba(22,16,34,.96);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:20px;
+}
+
+.card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.card-top span{
+    font-size:28px;
+    color:#b892ff;
+}
+
+.card h2{
+    font-size:17px;
+}
+
+.big-number{
+    font-size:38px;
+    font-weight:800;
+    margin-top:10px;
+}
+
+.sub{
+    color:var(--sub);
+    margin-top:6px;
+    font-size:14px;
+}
+
+/* PLATAFORMAS */
+
+.section-title{
+    padding:28px 20px 15px;
+    font-size:22px;
+    font-weight:700;
+}
+
+.platforms{
+    padding:0 20px;
+    display:grid;
+    gap:15px;
+}
+
+.platform-btn{
+    width:100%;
+    border:none;
+    background:rgba(22,16,34,.96);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:18px;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.platform-btn:hover{
+    transform:scale(1.02);
+    border-color:var(--primary);
+}
+
+.platform-icon{
+    width:55px;
+    height:55px;
+    border-radius:16px;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.platform-icon span{
+    font-size:28px;
+}
+
+.platform-info h3{
+    font-size:17px;
+    margin-bottom:4px;
+}
+
+.platform-info p{
+    color:var(--sub);
+    font-size:13px;
+}
+
+/* NAVBAR */
+
+.navbar{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:80px;
+    background:rgba(13,9,22,.97);
+    border-top:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    backdrop-filter:blur(12px);
+}
+
+.nav-btn{
+    background:none;
+    border:none;
+    color:#9f8ccf;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    cursor:pointer;
+}
+
+.nav-btn.active{
+    color:#fff;
+}
+
+.nav-btn span{
+    font-size:26px;
+}
+
+.nav-btn p{
+    font-size:12px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+
+    <div class="welcome">
+
+        <div class="welcome-top">
+
+            <div class="avatar">
+                <span class="material-icons-round">
+                    person
+                </span>
+            </div>
+
+            <div>
+                <h1 id="nomeAluno">
+                    Olá
+                </h1>
+
+                <p id="dadosAluno">
+                    Carregando dados...
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="cards">
+
+    <div class="card">
+
+        <div class="card-top">
+            <h2>Tarefas Pendentes</h2>
+
+            <span class="material-icons-round">
+                assignment
+            </span>
+        </div>
+
+        <div class="big-number">
+            12
+        </div>
+
+        <div class="sub">
+            atividades para concluir
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-top">
+            <h2>Faltas</h2>
+
+            <span class="material-icons-round">
+                warning
+            </span>
+        </div>
+
+        <div class="big-number">
+            3
+        </div>
+
+        <div class="sub">
+            faltas registradas
+        </div>
+
+    </div>
+
+</div>
+
+<div class="section-title">
+    Plataformas
+</div>
+
+<div class="platforms">
+
+    <button class="platform-btn">
+
+        <div class="platform-icon">
+            <span class="material-icons-round">
+                school
+            </span>
+        </div>
+
+        <div class="platform-info">
+            <h3>Khan Academy</h3>
+            <p>Atividades e exercícios</p>
+        </div>
+
+    </button>
+
+    <button class="platform-btn">
+
+        <div class="platform-icon">
+            <span class="material-icons-round">
+                menu_book
+            </span>
+        </div>
+
+        <div class="platform-info">
+            <h3>Leia SP</h3>
+            <p>Biblioteca digital</p>
+        </div>
+
+    </button>
+
+    <button class="platform-btn">
+
+        <div class="platform-icon">
+            <span class="material-icons-round">
+                code
+            </span>
+        </div>
+
+        <div class="platform-info">
+            <h3>Alura</h3>
+            <p>Cursos e tecnologia</p>
+        </div>
+
+    </button>
+
+</div>
+
+<div class="navbar">
+
+    <button class="nav-btn active">
+        <span class="material-icons-round">
+            home
+        </span>
+
+        <p>Home</p>
+    </button>
+
+    <button class="nav-btn">
+        <span class="material-icons-round">
+            school
+        </span>
+
+        <p>Plataformas</p>
+    </button>
+
+    <button class="nav-btn" onclick="logout()">
+        <span class="material-icons-round">
+            logout
+        </span>
+
+        <p>Sair</p>
+    </button>
+
+</div>
+
+<script>
+
+const usuario = JSON.parse(
+    localStorage.getItem("usuario")
+);
+
+if(!usuario){
+    window.location.href = "index.html";
+}
+
+document.getElementById("nomeAluno")
+.innerText = "Olá, " + usuario.nome;
+
+document.getElementById("dadosAluno")
+.innerText =
+usuario.ra + "-" +
+usuario.dig + " | " +
+usuario.uf;
+
+function logout(){
+
+    localStorage.removeItem("usuario");
+
+    window.location.href = "index.html";
+
+}
+
+</script>
+
+</body>
+</html>
